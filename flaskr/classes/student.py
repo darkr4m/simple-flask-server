@@ -37,8 +37,8 @@ METHODS:
 class Student():
     students = {}
 
-    def __init__(self,first_name,last_name,age,grade):
-        self._id
+    def __init__(self,id,first_name,last_name,age,grade):
+        self._id = id
         self._first_name = first_name
         self._last_name = last_name
         self._age = age
@@ -55,7 +55,13 @@ class Student():
     
     @first_name.setter
     def first_name(self, name):
-        self._first_name = name
+        if not isinstance(name, str):
+            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be a string.")
+        if len(name) < 3:
+            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be at least three characters in length.")
+        if not name.isalpha():
+            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must not contain any special characters or numbers.")
+        self._first_name = name.capitalize().strip()
     
     @property
     def last_name(self):

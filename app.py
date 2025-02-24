@@ -20,7 +20,7 @@ Student Class
     age - integer
     grade - string
 """
-
+from flaskr.classes.student import Student
 # sample student data
 students = [
      {'id': '1', 'first_name': 'John', 'last_name': 'Doe', 'age': 18, 'grade': 'A'},
@@ -34,3 +34,7 @@ students = [
      {'id': '9', 'first_name': 'Ethan', 'last_name': 'Wilson', 'age': 19, 'grade': 'C'},
      {'id': '10', 'first_name': 'Isabella', 'last_name': 'Moore', 'age': 22, 'grade': 'B'}
  ]
+
+student = Student(**students[0])
+print(student)
+student.first_name = 'a1a'
