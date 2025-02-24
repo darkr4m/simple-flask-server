@@ -77,11 +77,17 @@ class Student():
     def grade(self, grade):
         self._grade = grade
 
+    def __repr__(self):
+        return f"{self._first_name} {self._last_name}"
+
+    def __str__(self):
+        return f"STUDENT RECORD:\nID: {self._id}\n{self._first_name} {self._last_name}\nAge: {self._age}\nGrade: {self._grade}"
     
     @classmethod
     def get_all_students(cls):
         return cls.students
     
+    @classmethod
     def get_student_by_id(cls, id):
         pass
     
