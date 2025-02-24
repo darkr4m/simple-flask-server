@@ -25,8 +25,7 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    @app.route('/')
-    def index():
-        return 'Index'
+    from . import students
+    app.register_blueprint(students.bp)
 
     return app
