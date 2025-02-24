@@ -55,12 +55,12 @@ class Student():
     
     @first_name.setter
     def first_name(self, name):
-        if not isinstance(name, str):
-            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be a string.")
-        if len(name) < 3:
-            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be at least three characters in length.")
-        if not name.isalpha():
-            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must not contain any special characters or numbers.")
+        # if not isinstance(name, str):
+        #     raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be a string.")
+        # if len(name) < 3:
+        #     raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be at least three characters in length.")
+        # if not name.isalpha():
+        #     raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must not contain any special characters or numbers.")
         self._first_name = name.capitalize().strip()
     
     @property
@@ -87,7 +87,7 @@ class Student():
         return f"{self._first_name} {self._last_name}"
 
     def __str__(self):
-        return f"STUDENT RECORD:\nID: {self._id}\n{self._first_name} {self._last_name}\nAge: {self._age}\nGrade: {self._grade}"
+        return f"ID: {self._id}\n{self._first_name} {self._last_name}\nAge: {self._age}\nGrade: {self._grade}"
     
     @classmethod
     def get_all_students(cls):
@@ -99,4 +99,8 @@ class Student():
     
     @classmethod
     def add_student(cls, student):
-        pass
+        if not isinstance(student, Student):
+            raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m add_student requires a Student object.")
+        cls.students[student.id] = student
+        print(f"\u001b[32;1mSUCCESS - NEW STUDENT ADDED -\u001b[0m [{student.id}] {student.first_name} {student.last_name}")
+        return student

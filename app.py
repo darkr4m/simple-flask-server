@@ -35,6 +35,10 @@ students = [
      {'id': '10', 'first_name': 'Isabella', 'last_name': 'Moore', 'age': 22, 'grade': 'B'}
  ]
 
-student = Student(**students[0])
-print(student)
-student.first_name = 'a1a'
+# student = Student(**students[0])
+# print(student)
+# Student.add_student(student)
+
+for student in students:
+    new_student = Student(**student)
+    Student.add_student(new_student)
