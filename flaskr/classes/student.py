@@ -87,20 +87,39 @@ class Student():
         return f"{self._first_name} {self._last_name}"
 
     def __str__(self):
-        return f"ID: {self._id}\n{self._first_name} {self._last_name}\nAge: {self._age}\nGrade: {self._grade}"
+        return f"ID: {self._id}\n{self._first_name} {self._last_name}\nAge: {self._age}\nGrade: {self._grade}\n"
+    
+    def to_dict(self):
+        return {
+            'id': '1', 
+            'first_name': self._first_name, 
+            'last_name': self._last_name, 
+            'age': self._grade, 
+            'grade': self._grade
+        }
     
     @classmethod
     def get_all_students(cls):
-        return cls.students
+        student_list = []
+        for student in cls.students:
+            student_list.append(student)
+        return student_list
     
     @classmethod
     def get_student_by_id(cls, id):
-        pass
+        # if not isinstance(id, int):
+        #     raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m The value for first_name must be a non-negative number.")
+        student = cls.students.get(id)
+        if not student:
+            print(f"\u001b[31;1mStudent with ID {id} not found.\u001b[0m")
+            return None
+        return student
+
     
     @classmethod
     def add_student(cls, student):
         if not isinstance(student, Student):
             raise ValueError(f"\u001b[31;1m[Invalid Input]\u001b[0m add_student requires a Student object.")
         cls.students[student.id] = student
-        print(f"\u001b[32;1mSUCCESS - NEW STUDENT ADDED -\u001b[0m [{student.id}] {student.first_name} {student.last_name}")
+        print(f"\u001b[32;1mSUCCESS - STUDENT RECORD ADDED -\u001b[0m [{student.id}] {student.first_name} {student.last_name}")
         return student

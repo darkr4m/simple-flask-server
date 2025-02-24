@@ -42,3 +42,9 @@ students = [
 for student in students:
     new_student = Student(**student)
     Student.add_student(new_student)
+
+stud1 = Student.get_student_by_id('1')
+print(stud1)
+stud2 = print(Student.get_student_by_id('2'))
+
+print(stud1.to_dict())
